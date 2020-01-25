@@ -21,8 +21,13 @@ const ContactSchema = mongoose.Schema({
     type: Date,
     default: Date.now
     
+  },
+  name: {
+    type: String,
+    required: true
   }
 });
+
 
 // creates model
 module.exports = mongoose.model('contact', ContactSchema);

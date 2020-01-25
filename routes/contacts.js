@@ -41,15 +41,17 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const { name, email, phone, type } = req.body;
+    console.log(name)
     try {
       const newContact = new Contact({
-        name,
+        name:name,
         email,
         phone,
         type,
         user: req.user.id
       });
       const contact = await newContact.save();
+      console.log(contact)
       res.json(contact);
     } catch (err) {
       console.error(err.message);

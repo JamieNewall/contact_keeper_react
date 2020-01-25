@@ -23,7 +23,9 @@ router.post(
     })
   ],
   async (req, res) => {
+    // console.log('endpoint hit to start')
     const errors = validationResult(req);
+    console.log(errors)
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -32,7 +34,9 @@ router.post(
 
     try {
       let user = await User.findOne({ email: email });
+      console.log('endpoint hit')
       if (user) {
+        
         res.status(400).json({ msg: 'User already exists' });
       }
       // create new user using mongoose db user model
